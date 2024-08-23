@@ -7,10 +7,26 @@ def say_hello(request):
     return HttpResponse("Hello World")
 
 def homepage(request):
-    return render(request, "index.html")
+    page = {
+        "title": "Homepage",
+    }
+    return render(request, "index.html", page)
 
 def about(request):
     return render(request, "about.html")
 
 def contact(request):
-    return render(request, "contact.html")  
+    hq = "d"
+    email = "bXuRy@example.com"
+    socialprofiles = {
+        "github: https://github.com",
+        "linkedin: https://linkedin.com",
+        "twitter: https://twitter.com",
+    }
+
+    return render(request, "contact.html", {"email": email, "socialprofiles": socialprofiles, "hq": hq})  
+
+def experiment(request, person= None):    
+    if person == None:
+        person = "Guest"
+    return render(request, "experiment.html",{"data": person})

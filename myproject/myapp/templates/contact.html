@@ -1,25 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="https://matcha.mizu.sh/matcha.css" />
-  </head>
-  <body>
-    <h1>Contact Page</h1>
-    <nav>
-      <menu>
-        <li><a href="/app/home/">Home</a></li>
-        <li class=""><a href="/app/about/">About</a></li>
-        <li class=""><a href="/app/contact/">Contact</a></li>
-      </menu>
-    </nav>
+{% extends "layout.html" %} {% block content %}
     <h2>Contact Us</h2>
+    <h3>{{ email }}</h3>
+
+    <p>
+      <ol>
+      {% for profile in socialprofiles %}
+      <li>{{ profile }}</li>
+      {% endfor %}
+      </ol>
+    </p>
     <p>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos doloribus
       nesciunt animi vitae excepturi provident asperiores ducimus quidem dolorum
       iusto?
     </p>
-  </body>
-</html>
+    <p>
+      Our Headquarter is 
+      {% if hq == "d" %}
+        <strong>Dhaka</strong>
+      {% elif hq == "k" %} 
+        <strong>Khulna</strong>
+      {% else %} 
+      <strong>Rajshahi</strong>
+      {% endif %}
+    </p>
+  {% endblock %}
+
+  {% block title %} Contact {% endblock %}
